@@ -1,6 +1,6 @@
 ## Interface: 80200
 ## Title: MicroWoWTools
 ## Version: 8.2.1
-## Notes: Custom QOL tools by Micro
+## Notes: Custom QOL by Micro
 ## Author: Micro
 MicroWoWTools.lua
