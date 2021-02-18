@@ -1,3 +1,5 @@
+local DEBUG = false;
+
 local AddonFrame = CreateFrame("Frame", "MicroWoWAddonFrame");
 AddonFrame:RegisterEvent("GOSSIP_SHOW");
 AddonFrame:RegisterEvent("QUEST_DETAIL");
@@ -27,20 +29,20 @@ function HandleGossipShow()
 			end
 			
 			i=i+1
+			
+			if DEBUG then
+				print("-- DEBUG GOSSIP SHOW --");
+				print("Old text length: " .. parentFrameText:len());
+				print("New text length: " .. newText:len());
+			end
 		end
 	end
 end
 
 function HandleQuestDetail()
-	local frame = CreateFrame("Frame", "MicroQuestIDFrame", QuestFrame);
-	frame:SetPoint("TOP", 0, -30)
-	frame:SetSize(200, 20)
-	
-	local frameText = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-	frameText:SetPoint("CENTER")
-	frameText:SetText("QuestID: " .. GetQuestID())
-		
-	frame:SetScript("OnHide", function(self)
-		self:Hide();
-	end);
+	local tooltipFrame = _G["MicroQuestTooltip"] or CreateFrame("GameTooltip", "MicroQuestTooltip", QuestFrameDetailPanel, "GameTooltipTemplate");
+	tooltipFrame:SetOwner(QuestFrameDetailPanel, "ANCHOR_RIGHT", 0, -32);
+	tooltipFrame:ClearLines();
+	tooltipFrame:AddDoubleLine("QuestID:", GetQuestID());
+	tooltipFrame:Show()
 end
