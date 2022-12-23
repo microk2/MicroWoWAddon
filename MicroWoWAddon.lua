@@ -5,7 +5,11 @@ AddonFrame:RegisterEvent("QUEST_COMPLETE");
 AddonFrame:RegisterEvent("QUEST_PROGRESS");
 
 AddonFrame:SetScript("OnEvent", function(self, event, ...)
-	if 	(event == "QUEST_DETAIL") or (event == "QUEST_COMPLETE") or (event == "QUEST_PROGRESS") then
+	if (event == "QUEST_DETAIL") or (event == "QUEST_COMPLETE") or (event == "QUEST_PROGRESS") then
 		MWA.Core.CreateQuestIDFrame(MWA.Defines.Frames.QuestFrame, GetQuestID(), "ANCHOR_RIGHT", 0, -32)
 	end
 end)
+
+for _, value in pairs(MWA.Commands) do
+	RegisterNewSlashCommand(value.callback, value.name, value.alias)
+end

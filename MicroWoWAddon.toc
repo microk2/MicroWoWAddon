@@ -1,8 +1,10 @@
-## Interface: 40944
+## Interface: 45745
 ## Title: MicroWoWAddon
 ## Version: 1.0.0
 ## Author: Micro
 
 MicroWoWAddon_Defines.lua
+MicroWoWAddon_Utils.lua
+MicroWoWAddon_Commands.lua
 MicroWoWAddon_Core.lua
 MicroWoWAddon.lua

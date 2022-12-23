@@ -1,8 +1,9 @@
 MWA.Core = {}
 
-MWA.Core.CreateQuestIDFrame = function (parentFrame, questId, anchor, offsetX, offsetY)
+MWA.Core.CreateQuestIDFrame = function(parentFrame, questId, anchor, offsetX, offsetY)
     local questFrameName = MWA.Defines.AddonName .. "." .. parentFrame:GetName()
-    local tooltipFrame = _G[questFrameName] or CreateFrame("GameTooltip", questFrameName, parentFrame, "GameTooltipTemplate")
+    local tooltipFrame = _G[questFrameName] or
+        CreateFrame("GameTooltip", questFrameName, parentFrame, "GameTooltipTemplate")
     tooltipFrame:SetOwner(parentFrame, anchor, offsetX, offsetY)
     tooltipFrame:ClearLines()
     tooltipFrame:AddDoubleLine("QuestID:", questId)
@@ -15,7 +16,7 @@ MWA.Core.CreateQuestIDFrame = function (parentFrame, questId, anchor, offsetX, o
     WowHeadBtn:SetHeight(30)
     WowHeadBtn:SetText("WoWHead Link")
 
-    WowHeadBtn:SetScript("OnClick", function(self) 
+    WowHeadBtn:SetScript("OnClick", function(self)
         MWA.Core.CreateEditBoxFrame("WoWHead Quest Link", "https://www.wowhead.com/quest=" .. questId, 400, 200)
     end)
 end
@@ -41,7 +42,7 @@ MWA.Core.CreateEditBoxFrame = function(title, text, sizeX, sizeY)
     titleFrame:SetParent(editBox)
     titleFrame:SetSize(editBox:GetWidth(), 30)
     titleFrame:SetPoint("TOP", editBox, 0, -40)
-    titleFrame.text = titleFrame:CreateFontString(nil, "ARTWORK") 
+    titleFrame.text = titleFrame:CreateFontString(nil, "ARTWORK")
     titleFrame.text:SetFont("Fonts\\ARIALN.ttf", 20, "OUTLINE")
     titleFrame.text:SetPoint("CENTER", 0, 0)
     titleFrame.text:SetText(title)
